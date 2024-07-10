@@ -1,0 +1,14 @@
+<section>
+  <div class="title-list">
+    <mat-button-toggle-group
+      [formControl]="titleControl"
+      hideSingleSelectionIndicator="true"
+    >
+      @for(title of titleList; track $index) {
+      <mat-button-toggle [checked]="$first" [value]="title">{{
+        title
+      }}</mat-button-toggle>
+      }
+    </mat-button-toggle-group>
+  </div>
+</section>
