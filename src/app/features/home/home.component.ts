@@ -11,6 +11,6 @@ import { ReactiveFormsModule, FormControl } from '@angular/forms'
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  titleList: string[] = ['Now Playing', 'Popular', 'Upcoming']
+  titleList: string[] = ['Now Playing', 'Upcoming']
   titleControl = new FormControl(this.titleList[0])
 }
