@@ -1,0 +1,54 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+
+  & > span {
+    position: relative;
+
+    .search-icon {
+      position: absolute;
+      transform: translate(-5%, -8%);
+    }
+
+    input {
+      block-size: 30px;
+      inline-size: 120px;
+      border: none;
+      border-radius: 12px;
+      text-indent: 2rem;
+      font-size: 1rem;
+      transition: inline-size 0.2s linear;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:active,
+      &:focus {
+        inline-size: 60vi;
+
+        & + .close-icon {
+          visibility: visible;
+        }
+      }
+    }
+
+    .close-icon {
+      visibility: hidden;
+      position: absolute;
+      inset-inline-end: 0;
+      transform: translateY(-10%);
+      transition: visibility 0.2s ease-in;
+    }
+  }
+}
+
+@mixin color($theme) {
+  input {
+    background: mat.get-theme-color($theme, surface-container-highest);
+    color: mat.get-theme-color($theme, on-surface);
+  }
+}
