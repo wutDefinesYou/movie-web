@@ -1,7 +1,8 @@
-import { Component } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatButtonModule } from '@angular/material/button'
 import { ReactiveFormsModule, FormControl } from '@angular/forms'
+import { MovieListService } from '../../data/movie-list.service'
 
 @Component({
   selector: 'app-home',
@@ -13,4 +14,10 @@ import { ReactiveFormsModule, FormControl } from '@angular/forms'
 export class HomeComponent {
   titleList: string[] = ['Now Playing', 'Upcoming']
   titleControl = new FormControl(this.titleList[0])
+
+  private movieListService = inject(MovieListService)
+
+  ngOnInit() {
+    this.movieListService.getApi()
+  }
 }
