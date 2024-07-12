@@ -8,6 +8,12 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app'
 import { getAuth, provideAuth } from '@angular/fire/auth'
 import { getFirestore, provideFirestore } from '@angular/fire/firestore'
 import { getFunctions, provideFunctions } from '@angular/fire/functions'
+import {
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from '@angular/common/http'
+import { tmdbApiKeyInterceptor } from './data/interceptors/tmdb-api-key-header.interceptor'
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideAnimationsAsync(),
+    provideHttpClient(withFetch(), withInterceptors([tmdbApiKeyInterceptor])),
     provideFirebaseApp(() =>
       initializeApp({
         projectId: 'movie-server-e7170',

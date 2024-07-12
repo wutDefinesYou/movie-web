@@ -1,14 +1,21 @@
 <section>
-  <div>
+  <div class="movie-list-type">
     <mat-button-toggle-group
-      [formControl]="titleControl"
+      [formControl]="movieListTypeControl"
       hideSingleSelectionIndicator="true"
+      (change)="onMovieListTypeChanged()"
     >
-      @for(title of titleList; track $index) {
+      @for(title of ['Now Playing', 'Popular']; track $index) {
       <mat-button-toggle [checked]="$first" [value]="title">{{
         title
       }}</mat-button-toggle>
       }
     </mat-button-toggle-group>
+  </div>
+
+  <div class="horizontal-scroller">
+    @for(movie of currentMovieListType(); track movie.id) {
+    <app-movie-card [movie]="movie"></app-movie-card>
+    }
   </div>
 </section>
