@@ -1,0 +1,20 @@
+<mat-button-toggle-group
+  [formControl]="trendingListTypeControl"
+  hideSingleSelectionIndicator="true"
+  (change)="onTrendingListTypeChanged()"
+>
+  @for(title of ['Today', 'This Week']; track $index) {
+  <mat-button-toggle [checked]="$first" [value]="$first ? 'day' : 'week'">{{
+    title
+  }}</mat-button-toggle>
+  }
+</mat-button-toggle-group>
+
+<div class="horizontal-scroller">
+  @for(item of currentTrendingList(); track item.id) {
+  <app-movie-card
+    [item]="item"
+    [isMovie]="item.media_type === 'movie'"
+  ></app-movie-card>
+  }
+</div>

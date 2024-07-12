@@ -1,0 +1,10 @@
+<div class="card">
+  @if(isMovie()) {
+  <img mat-card-image [src]="poster_path" [alt]="movie()?.title" />
+  <p>{{ movie()?.title }}</p>
+  } @else {
+  <img mat-card-image [src]="poster_path" [alt]="tvShow()?.name" />
+  <p>{{ tvShow()?.name }}</p>
+  }
+  <p>{{ item().vote_average | number : '1.1-1' }}</p>
+</div>

@@ -1,0 +1,17 @@
+<mat-button-toggle-group
+  [formControl]="tvShowListTypeControl"
+  hideSingleSelectionIndicator="true"
+  (change)="onTVShowListTypeChanged()"
+>
+  @for(title of ['Airing Today', 'On The Air', 'Popular']; track $index) {
+  <mat-button-toggle [checked]="$first" [value]="title">{{
+    title
+  }}</mat-button-toggle>
+  }
+</mat-button-toggle-group>
+
+<div class="horizontal-scroller">
+  @for(tvShow of currentTVShowList(); track tvShow.id) {
+  <app-movie-card [item]="tvShow" [isMovie]="false"></app-movie-card>
+  }
+</div>

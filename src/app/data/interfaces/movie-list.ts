@@ -11,11 +11,12 @@ export interface MovieList {
 
 export interface MovieListWithoutDates extends Omit<MovieList, 'dates'> {}
 
-export interface MovieResult {
+export interface TrendingMovieResult {
   adult: boolean
   backdrop_path: string
   genre_ids: number[]
   id: number
+  media_type: 'movie' | 'tv'
   original_language: string
   original_title: string
   overview: string
@@ -27,3 +28,5 @@ export interface MovieResult {
   vote_average: number
   vote_count: number
 }
+
+export interface MovieResult extends Omit<TrendingMovieResult, 'media_type'> {}

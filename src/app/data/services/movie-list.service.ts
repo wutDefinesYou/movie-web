@@ -19,6 +19,8 @@ export class MovieListService {
   readonly nowPlaying = this.nowPlayingSignal.asReadonly()
   private popularSignal = signal<MovieResult[]>([])
   readonly popular = this.popularSignal.asReadonly()
+  private upcomingSignal = signal<MovieResult[]>([])
+  readonly upcoming = this.upcomingSignal.asReadonly()
 
   constructor() {}
 
@@ -43,8 +45,9 @@ export class MovieListService {
   }
 
   getUpcoming(): Observable<MovieResult[]> {
-    return this.http
-      .get<MovieList>(`${this.apiUrl}/upcoming`)
-      .pipe(map(({ results }: MovieList) => results))
+    return this.http.get<MovieList>(`${this.apiUrl}/upcoming`).pipe(
+      map(({ results }: MovieList) => results),
+      tap((results) => this.upcomingSignal.set(results))
+    )
   }
 }
