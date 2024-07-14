@@ -28,7 +28,7 @@ export class MovieCardComponent {
 
   ngOnInit() {
     this.poster_path = this.item().poster_path
-      ? `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${
+      ? `https://www.themoviedb.org/t/p/w220_and_h330_face${
           this.item().poster_path
         }`
       : '/assets/images/image-placeholder.svg'

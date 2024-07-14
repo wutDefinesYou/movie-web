@@ -1,0 +1,64 @@
+@use '../../../../../public/styles/variables' as v;
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+.card-list {
+  display: inline-block;
+  inline-size: 280px;
+  border-radius: 12px;
+  padding: 8px;
+
+  & > * {
+    margin-inline: auto;
+  }
+
+  p {
+    inline-size: 85%;
+    font-size: 1.35rem;
+    text-wrap: wrap;
+  }
+
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    .movie-item {
+      display: flex;
+      gap: 14px;
+
+      .rank {
+        display: grid;
+        place-items: center;
+      }
+
+      img {
+        block-size: 68px;
+      }
+
+      .description {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+
+        .title {
+          font-size: 1rem;
+          text-wrap: wrap;
+        }
+
+        .rating {
+          font-size: 0.8rem;
+          color: v.$ratingColor;
+        }
+      }
+    }
+  }
+}
+
+@mixin color($theme) {
+  .card-list {
+    background: mat.get-theme-color($theme, secondary-container);
+    color: mat.get-theme-color($theme, on-secondary-container);
+  }
+}

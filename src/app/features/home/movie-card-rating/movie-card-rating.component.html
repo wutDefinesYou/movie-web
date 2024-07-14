@@ -1,0 +1,15 @@
+<div class="card-list">
+  <p>{{ title() }}</p>
+  <div class="list-container">
+    @for(movie of list().slice(0, 5); track movie.id) {
+    <div class="movie-item">
+      <span class="rank">{{ $index + 1 }}</span>
+      <img [src]="getPosterPath(movie)" [alt]="movie.title" />
+      <span class="description">
+        <span class="title">{{ movie.title }}</span
+        ><span class="rating">{{ movie.vote_average | number : '1.1-1' }}</span>
+      </span>
+    </div>
+    }
+  </div>
+</div>

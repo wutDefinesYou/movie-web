@@ -21,6 +21,8 @@ export class MovieListService {
   readonly popular = this.popularSignal.asReadonly()
   private upcomingSignal = signal<MovieResult[]>([])
   readonly upcoming = this.upcomingSignal.asReadonly()
+  private topRatedSignal = signal<MovieResult[]>([])
+  readonly topRated = this.topRatedSignal.asReadonly()
 
   constructor() {}
 
@@ -41,7 +43,10 @@ export class MovieListService {
   getTopRated(): Observable<MovieResult[]> {
     return this.http
       .get<MovieListWithoutDates>(`${this.apiUrl}/top_rated`)
-      .pipe(map(({ results }: MovieListWithoutDates) => results))
+      .pipe(
+        map(({ results }: MovieListWithoutDates) => results),
+        tap((results) => this.topRatedSignal.set(results))
+      )
   }
 
   getUpcoming(): Observable<MovieResult[]> {

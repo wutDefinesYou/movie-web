@@ -9,3 +9,18 @@
 <section>
   <app-tv-show-list></app-tv-show-list>
 </section>
+
+<section class="horizontal-scroller">
+  <app-movie-card-rating
+    [list]="topRatedMovieLast30days"
+    title="Top Rated Movies past 30 Days"
+  ></app-movie-card-rating>
+  <app-movie-card-rating
+    [list]="topRatedMoviesThisYear"
+    title="Top Rated Movies This Year"
+  ></app-movie-card-rating>
+  <app-movie-card-rating
+    [list]="topRatedMovies"
+    title="All The Time Top Rated Movies"
+  ></app-movie-card-rating>
+</section>

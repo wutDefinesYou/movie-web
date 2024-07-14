@@ -14,6 +14,7 @@ import {
   withInterceptors,
 } from '@angular/common/http'
 import { tmdbApiKeyInterceptor } from './data/interceptors/tmdb-api-key-header.interceptor'
+import { DatePipe } from '@angular/common'
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +23,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideAnimationsAsync(),
     provideHttpClient(withFetch(), withInterceptors([tmdbApiKeyInterceptor])),
+    [DatePipe],
     provideFirebaseApp(() =>
       initializeApp({
         projectId: 'movie-server-e7170',
