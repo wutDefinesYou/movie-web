@@ -1,0 +1,22 @@
+.general-info {
+  display: flex;
+  gap: 15px;
+
+  img {
+    inline-size: 96px;
+    border-radius: 12px;
+  }
+
+  .text {
+    display: block;
+
+    .title-row {
+      margin-block-start: 2px;
+      font-size: 1.4rem;
+
+      .title {
+        font-weight: 600;
+      }
+    }
+  }
+}

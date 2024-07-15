@@ -1,0 +1,27 @@
+<div class="general-info">
+  <img [src]="posterPath() | imageFallback" [alt]="movieDetails().title" />
+  <div class="text">
+    <p class="title-row">
+      <span class="title">{{ movieDetails().original_title }}</span>
+      <span class="year"> ({{ movieDetails().release_date | date : 'yyyy' }})</span>
+    </p>
+    <p class="info-row">
+      <span>{{ certification() }}</span>
+      <span>{{ movieDetails().release_date }}</span>
+      @for(country of movieDetails().origin_country; track $index) {
+      <span>{{ country }}</span>
+      @if(!$last) {
+      <span>|</span>
+      }} @for(genre of movieDetails().genres; track $index) {
+      <span>{{ genre.name }}</span>
+      @if(!$last) {
+      <span>/</span>
+      }}
+      <span>{{ movieDetails().runtime | minToHr }}</span>
+    </p>
+    <div><button>Watchlist</button><button>Favorite</button></div>
+  </div>
+</div>
+<div class="rating">
+  <span>{{ movieDetails().vote_average }}</span>
+</div>

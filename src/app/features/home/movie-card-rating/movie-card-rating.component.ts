@@ -1,11 +1,12 @@
 import { Component, input } from '@angular/core'
 import { MovieResult } from '../../../data/interfaces/movie-list'
 import { DecimalPipe } from '@angular/common'
+import { ImageFallbackPipe } from '../../../shared/pipes/image-fallback.pipe'
 
 @Component({
   selector: 'app-movie-card-rating',
   standalone: true,
-  imports: [DecimalPipe],
+  imports: [DecimalPipe, ImageFallbackPipe],
   templateUrl: './movie-card-rating.component.html',
   styleUrl: './movie-card-rating.component.scss',
 })
@@ -14,8 +15,6 @@ export class MovieCardRatingComponent {
   list = input.required<MovieResult[]>()
 
   getPosterPath(movie: MovieResult) {
-    return movie.poster_path
-      ? `https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`
-      : '/assets/images/image-placeholder.svg'
+    return `https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`
   }
 }

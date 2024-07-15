@@ -4,7 +4,7 @@
     @for(movie of list().slice(0, 5); track movie.id) {
     <div class="movie-item">
       <span class="rank">{{ $index + 1 }}</span>
-      <img [src]="getPosterPath(movie)" [alt]="movie.title" />
+      <img [src]="getPosterPath(movie) | imageFallback" [alt]="movie.title" />
       <span class="description">
         <span class="title">{{ movie.title }}</span
         ><span class="rating">{{ movie.vote_average | number : '1.1-1' }}</span>

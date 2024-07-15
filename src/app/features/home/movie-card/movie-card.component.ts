@@ -9,11 +9,13 @@ import {
   TrendingTVShowResult,
   TVShowResult,
 } from '../../../data/interfaces/tv-show-list'
+import { ImageFallbackPipe } from '../../../shared/pipes/image-fallback.pipe'
+import { RouterModule } from '@angular/router'
 
 @Component({
   selector: 'app-movie-card',
   standalone: true,
-  imports: [MatCardModule, DecimalPipe],
+  imports: [MatCardModule, DecimalPipe, ImageFallbackPipe, RouterModule],
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss',
 })
@@ -24,14 +26,14 @@ export class MovieCardComponent {
   isMovie = input.required<boolean>()
   movie = signal<MovieResult | TrendingMovieResult | null>(null)
   tvShow = signal<TVShowResult | TrendingTVShowResult | null>(null)
-  poster_path: string | undefined
+  posterPath = signal<string | undefined>(undefined)
 
   ngOnInit() {
-    this.poster_path = this.item().poster_path
-      ? `https://www.themoviedb.org/t/p/w220_and_h330_face${
-          this.item().poster_path
-        }`
-      : '/assets/images/image-placeholder.svg'
+    this.posterPath.set(
+      `https://www.themoviedb.org/t/p/w220_and_h330_face${
+        this.item().poster_path
+      }`
+    )
 
     this.isMovie()
       ? this.movie.set(this.item() as MovieResult | TrendingMovieResult)

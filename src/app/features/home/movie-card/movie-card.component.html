@@ -1,9 +1,22 @@
-<div class="card">
+<div
+  class="card"
+  [routerLink]="
+    isMovie() ? '/movie/' + movie()?.id : '/tv-show/' + tvShow()?.id
+  "
+>
   @if(isMovie()) {
-  <img mat-card-image [src]="poster_path" [alt]="movie()?.title" />
+  <img
+    mat-card-image
+    [src]="posterPath() | imageFallback"
+    [alt]="movie()?.title"
+  />
   <p>{{ movie()?.title }}</p>
   } @else {
-  <img mat-card-image [src]="poster_path" [alt]="tvShow()?.name" />
+  <img
+    mat-card-image
+    [src]="posterPath() | imageFallback"
+    [alt]="tvShow()?.name"
+  />
   <p>{{ tvShow()?.name }}</p>
   }
   <p>{{ item().vote_average | number : '1.1-1' }}</p>
