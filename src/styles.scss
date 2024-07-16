@@ -6,6 +6,8 @@
 @use './app/features/header/header.component.scss' as header;
 @use './app/features/home/movie-card-rating/movie-card-rating.component.scss' as
   movie-card;
+@use '../src/app/features/movie-page/description-card/description-card.component.scss'
+  as movie-page-description;
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -19,11 +21,13 @@
   @include mat.all-component-themes(theme.$light-theme);
   @include header.color(theme.$light-theme);
   @include movie-card.color(theme.$light-theme);
+  @include movie-page-description.color(theme.$light-theme);
 
   @media (prefers-color-scheme: dark) {
     @include mat.all-component-colors(theme.$dark-theme);
     @include header.color(theme.$dark-theme);
     @include movie-card.color(theme.$dark-theme);
+    @include movie-page-description.color(theme.$dark-theme);
   }
 }
 

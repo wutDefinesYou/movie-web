@@ -2,12 +2,19 @@ import { Component, input, signal } from '@angular/core'
 import { MovieDetails } from '../../../data/interfaces/movie-details'
 import { AsyncPipe, DatePipe } from '@angular/common'
 import { ImageFallbackPipe } from '../../../shared/pipes/image-fallback.pipe'
-import { MinToHrPipe } from '../../../shared/pipes/min-to-hr.pipe'
+import { MatButtonModule } from '@angular/material/button'
+import { MatIconModule } from '@angular/material/icon'
 
 @Component({
   selector: 'app-description-card',
   standalone: true,
-  imports: [AsyncPipe, ImageFallbackPipe, DatePipe, MinToHrPipe],
+  imports: [
+    AsyncPipe,
+    ImageFallbackPipe,
+    DatePipe,
+    MatButtonModule,
+    MatIconModule,
+  ],
   templateUrl: './description-card.component.html',
   styleUrl: './description-card.component.scss',
 })
