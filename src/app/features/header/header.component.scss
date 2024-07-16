@@ -48,8 +48,12 @@ mat-toolbar {
 }
 
 @mixin color($theme) {
-  input {
-    background: mat.get-theme-color($theme, surface-container-highest);
-    color: mat.get-theme-color($theme, on-surface);
+  mat-toolbar {
+    background: mat.get-theme-color($theme, primary-container);
+
+    input {
+      background: mat.get-theme-color($theme, surface-container-highest);
+      color: mat.get-theme-color($theme, on-surface);
+    }
   }
 }
