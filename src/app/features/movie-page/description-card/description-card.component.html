@@ -33,5 +33,13 @@
   </div>
 </div>
 <div class="rating">
-  <span>{{ movieDetails().vote_average }}</span>
+  <span class="score">
+    <span class="tmdb-text">TMDB Score:</span>
+    <span class="indicator">
+      <span class="score-number">{{ score() }}</span>
+      <mat-progress-spinner mode="determinate" [value]="score()" diameter="65">
+      </mat-progress-spinner>
+    </span>
+  </span>
+  <span class="go-rate">Rate This Movie</span>
 </div>

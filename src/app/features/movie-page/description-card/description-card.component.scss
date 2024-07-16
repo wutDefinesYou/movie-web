@@ -44,24 +44,48 @@
       gap: 12px;
 
       button.mat-mdc-fab-base {
-        flex-basis: 40%;
+        flex-basis: min(40%, 120px);
         block-size: 42px;
       }
     }
   }
 }
 
-@mixin color($theme) {
-  .general-info > .text {
-    .title-row {
-      .year {
-        color: mat.get-theme-color($theme, secondary);
-      }
+.rating {
+  margin-block-start: 1.2rem;
+  inline-size: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  .score {
+    .tmdb-text {
+      display: block;
+      font-size: 0.8rem;
     }
 
-    .info-row .cert {
-      border: 1px solid mat.get-theme-color($theme, outline);
-      color: mat.get-theme-color($theme, outline);
+    .indicator {
+      display: inline-block;
+      margin-block-start: 0.4rem;
+      position: relative;
+
+      .score-number {
+        position: absolute;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.8rem;
+      }
     }
+  }
+}
+
+@mixin color($theme) {
+  .general-info .text .title-row .year {
+    color: mat.get-theme-color($theme, secondary);
+  }
+
+  .info-row .cert {
+    border: 1px solid mat.get-theme-color($theme, outline);
+    color: mat.get-theme-color($theme, outline);
   }
 }

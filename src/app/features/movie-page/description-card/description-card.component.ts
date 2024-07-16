@@ -4,6 +4,7 @@ import { AsyncPipe, DatePipe } from '@angular/common'
 import { ImageFallbackPipe } from '../../../shared/pipes/image-fallback.pipe'
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 @Component({
   selector: 'app-description-card',
@@ -14,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon'
     DatePipe,
     MatButtonModule,
     MatIconModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './description-card.component.html',
   styleUrl: './description-card.component.scss',
@@ -22,6 +24,7 @@ export class DescriptionCardComponent {
   movieDetails = input.required<MovieDetails>()
   certification = input.required<string>()
   posterPath = signal<string | undefined>(undefined)
+  score = signal<number | undefined>(undefined)
 
   ngOnInit() {
     this.posterPath.set(
@@ -29,5 +32,7 @@ export class DescriptionCardComponent {
         this.movieDetails().poster_path
       }`
     )
+
+    this.score.set(Math.floor(this.movieDetails().vote_average * 10))
   }
 }
