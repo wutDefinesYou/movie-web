@@ -1,0 +1,7 @@
+<h3>Overview</h3>
+<p class="content">
+  {{ movieDetails().overview | truncate : 150 : isTruncating() }}
+  <a href="javascript:void 0" (click)="toggleTruncate()"
+    >@if(isTruncating()) { Read More } @else { Read Less }</a
+  >
+</p>

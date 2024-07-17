@@ -4,11 +4,12 @@ import { MovieService } from '../../data/services/movie.service'
 import { MovieDetails } from '../../data/interfaces/movie-details'
 import { DescriptionCardComponent } from './description-card/description-card.component'
 import { MovieCertificationService } from '../../data/services/movie-certification.service'
+import { OverviewComponent } from './overview/overview.component'
 
 @Component({
   selector: 'app-movie-page',
   standalone: true,
-  imports: [DescriptionCardComponent],
+  imports: [DescriptionCardComponent, OverviewComponent],
   templateUrl: './movie-page.component.html',
   styleUrl: './movie-page.component.scss',
 })
