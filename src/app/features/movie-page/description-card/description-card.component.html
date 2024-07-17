@@ -10,7 +10,7 @@
     <span class="info-row">
       <span class="cert">{{ certification() }}</span>
       <span class="date">{{
-        movieDetails().release_date | date : 'dd-MM-yyyy'
+        movieDetails().release_date | date : 'MM-dd-yyyy'
       }}</span>
       <span class="country">
         @for(country of movieDetails().origin_country; track $index) {
@@ -41,5 +41,8 @@
       </mat-progress-spinner>
     </span>
   </span>
-  <span class="go-rate">Rate This Movie</span>
+  <span class="go-rate"
+    ><span class="counts">{{ movieDetails().vote_count }} people</span
+    ><span>rated this movie on <a href="tmdbUrl">TMDB</a></span></span
+  >
 </div>

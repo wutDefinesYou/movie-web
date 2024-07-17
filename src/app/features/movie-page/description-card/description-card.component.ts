@@ -25,6 +25,7 @@ export class DescriptionCardComponent {
   certification = input.required<string>()
   posterPath = signal<string | undefined>(undefined)
   score = signal<number | undefined>(undefined)
+  tmdbUrl = 'https://www.themoviedb.org'
 
   ngOnInit() {
     this.posterPath.set(
@@ -32,7 +33,6 @@ export class DescriptionCardComponent {
         this.movieDetails().poster_path
       }`
     )
-
     this.score.set(Math.floor(this.movieDetails().vote_average * 10))
   }
 }
